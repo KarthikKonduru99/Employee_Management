@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Ratna Global Technologies | Employee Login </title>
+      <meta name="description" content="Welcome to Ratna Global Technologies Employee Login page. Please enter your email address to receive an OTP.">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{% static 'style.css' %}">
+      <link rel = "icon" href ="{% static 'images/rgt.png' %}" type = "image/x-icon" >
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.5/sweetalert2.min.js" integrity="sha512-..."></script>
+      <script>
+         function passvalues() {
+            const email = document.getElementById("Employee_Mail").value
+            localStorage.setItem('email', email);
+
+            const messageContainer = document.getElementById("message-container");
+            messageContainer.innerHTML = "<h3><b>Please check your email for the OTP.</b></h3>";
+
+         }
+      </script>
+   </head>
+
+   <body oncontextmenu="return false;">
+      <header>
+         <div class="header-container">
+            <div class="logo-container">
+               <center>
+                  <img src="{% static 'images/rgt.png' %}" alt="Ratna Global Technologies" width="150" height="100" style="border-radius: 10%">
+               </center>
+            </div>
+            <div class="title-container">
+               <h1 class="title">Ratna Global Technologies</h1>
+            </div>
+         </div>
+   </header>
+
+   <main class="main-content">
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Employee Login
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="form-inner">
+               <form id="form" action="validate/" method="post" class="login">
+				  {% csrf_token %}
+                  <div class="field">
+                     <input id = "Employee_Mail" type="email" placeholder="Email Address"  pattern=".+@ratnaglobaltech.com" name="Employee_Mail" title="Please provide only Ratna Global Tech offical mail id" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Send OTP" onclick="passvalues()">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </main>
+      <div id="message-container"></div>
+   <footer>
+      <div class="footer-container">
+         <div class="footer-text">
+            © 2023 Ratna Global Technologies. All rights reserved.
+         </div>
+      </div>
+   </footer>
+   </body>
+</html>

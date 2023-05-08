@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Ratna Global Technologies | Employee Validate </title>
+      <meta name="description" content="Welcome to Ratna Global Technologies Employee Login page. Please enter your email address to receive an OTP.">
+      <link rel="stylesheet" href="{% static 'style.css' %}">
+      <link rel = "icon" href ="{% static 'images/rgt.png' %}" type = "image/x-icon" >
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body oncontextmenu="return false;">
+      <header>
+         <div class="header-container">
+            <div class="logo-container">
+               <center>
+                  <img src="{% static 'images/rgt.png' %}" alt="Ratna Global Technologies" width="150" height="100" style="border-radius: 10%">
+               </center>
+            </div>
+            <div class="title-container">
+               <h1>Ratna Global Technologies</h1>
+            </div>
+         </div>
+      </header>
+         <div class="wrapper">
+            <div class="title-text">
+               <div class="title login">
+                  Employee Login
+               </div>
+            </div>
+            <div class="form-container">
+               <div class="form-inner">
+                  <form action="{% url 'validate_otp' %}" method="post" class="Validate OTP">
+                     {% csrf_token %}
+                     <div class="field">
+                        <input type="text" id= "mail"  placeholder="Email Address" name="Employee_Mail" style="background-color:#A9A9A9" readonly>
+                     </div>
+                     <div class="field">
+                        <input type="text" placeholder="Otp" name="otp" required maxlength="6">
+                     </div>
+                     <br>
+                     <div>
+                        <button type="button" id="resend_otp">Resend OTP</button>
+                         <span id="attempts_left">1 attempt left</span>
+                     </div>
+                     <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Validate otp">
+                     </div>
+                     <div class="field">
+                        {% if error_message %}
+                           <p class="error-message"><b>{{ error_message }}</b></p>
+                        {% endif %}
+                     </div>
+                  </form>
+                  <script>
+                      document.getElementById("mail").value = localStorage.getItem("email")
+                      var resendButton = document.getElementById("resend_otp");
+                      var attemptsLeft = document.getElementById("attempts_left");
+
+                      var resendCount = 0;
+
+                      resendButton.addEventListener("click", function() {
+                          if (resendCount < 1) {
+                              // Send an AJAX request to the server to resend the OTP
+                              var xhr = new XMLHttpRequest();
+                              xhr.onreadystatechange = function() {
+                                  if (this.readyState == 4 && this.status == 200) {
+                                      // Handle the response from the server
+                                      alert(this.responseText);
+                                  }
+                              };
+                              xhr.open("GET", "{% url 'resend_otp' %}", true);
+                              xhr.send();
+
+                              resendCount++;
+                              attemptsLeft.innerText = (1 - resendCount) + " attempt left";
+                              resendButton.disabled = true; // Disable button after it is clicked
+                          }
+                      });
+
+                  </script>
+               </div>
+         </div>
+      </div>
+   </body>
+</html>
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ratna Global Technologies - OTP for login</title>
+	<style>
+		/* Define CSS styles for your email */
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-color: #F9FAFB;
+		}
+		.container {
+			margin: 50px auto;
+			width: 90%;
+			max-width: 600px;
+			padding: 20px;
+			background-color: #FFFFFF;
+			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+			border-radius: 8px;
+			overflow: hidden;
+			animation: slide-in 0.5s ease-out forwards;
+		}
+		.header {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #eee;
+			animation: fade-in 1s ease-out forwards;
+		}
+		.logo {
+			font-size: 1.6em;
+			color: #00466a;
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.message {
+			font-size: 1.2em;
+			margin-bottom: 20px;
+			font-weight: 500;
+			animation: slide-up 1s ease-out forwards;
+		}
+		.otp {
+			background-color: #00466a;
+			margin: 0 auto;
+			width: max-content;
+			padding: 20px 40px;
+			color: #FFFFFF;
+			border-radius: 50px;
+			display: inline-block;
+			font-size: 2em;
+			text-align: center;
+			animation: slide-in 1s ease-out forwards;
+		}
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 30px;
+			padding-top: 20px;
+			border-top: 1px solid #eee;
+			font-size: 0.8em;
+			line-height: 1;
+			font-weight: 300;
+			animation: slide-up 1s ease-out forwards;
+		}
+		.footer p {
+			margin: 0;
+		}
+		.footer p:last-child {
+			color: #00466a;
+			font-weight: 500;
+			text-decoration: none;
+			transition: all 0.3s ease-out;
+		}
+		.footer p:last-child:hover {
+			color: #0077b6;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		/* Define animations */
+		@keyframes slide-in {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(0%);
+			}
+		}
+		@keyframes slide-up {
+			from {
+				transform: translateY(100%);
+			}
+			to {
+				transform: translateY(0%);
+			}
+		}
+		@keyframes fade-in {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<a href="https://ratnaglobaltech.com/" class="logo">Ratna Global Technologies</a>
+		</div>
+		<p class="message">Hi,</p>
+		<p>Use the following OTP to complete your login process. The OTP is valid for 5 minutes.</p>
+		<center>
+			<label for='otp' class='otp-label'>Your OTP code is:</label>
+			<h2 id="otp" class="otp" style="color: #FFFFFF;">{{ otp }}</h2>
+		</center>
+		<p>Regards,<br />RGT</p>
+		<div class="footer">
+			<p>Ratna Global Technologies</p>
+			<p>Hyderabad</p>
+		</div>
+	</div>
+</body>
+</html>

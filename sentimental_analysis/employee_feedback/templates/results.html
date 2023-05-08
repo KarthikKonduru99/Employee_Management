@@ -1,0 +1,46 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Results</title>
+    <style>
+        #logout {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="logout" onclick="location.href='/'" >Logout</button>
+  <center>
+    <h1>Feedback on how employees are satisfied with Company.</h1>
+    <img src="{% static 'graphs/pie_company.png' %}" alt="Overall Company" >
+
+    <h1> Feedback on how employees are satisfied with Management</h1>
+    <img src="{% static 'graphs/bar_management.png' %}" alt="Management" width="800" height="600">
+
+      <h1> Feedback on how employees are satisfied with Manager</h1>
+    <img src="{% static 'graphs/manager.png' %}" alt="Manager" width="800" height="600">
+
+     <h1> Feedback on how employees are satisfied with HR</h1>
+    <img src="{% static 'graphs/HR.png' %}" alt="HR">
+
+    <h1>Feedback on compensation and benefits, culture and values & work life balance</h1>
+      <img src="{% static 'graphs/plot.png' %}" alt="Overall Feedback" width="1300" height="600">
+  </center>
+
+</body>
+</html>

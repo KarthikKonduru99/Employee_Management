@@ -1,0 +1,110 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee Feedback Submitted - Ratna Global Tech</title>
+    <link rel="icon" href="{% static 'images/rgt.png' %}" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #FFFFFF;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 2em 0;
+      }
+
+
+      .logo {
+        width: 200px;
+        height: 150px;
+      }
+
+      .title {
+        font-size: 3em;
+        margin-top: 0.5em;
+        font-weight: bold;
+        color: #333;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .subtitle {
+        font-size: 1.5em;
+        margin-bottom: 1.5em;
+        color: #666;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+
+      .main-content {
+        margin-top: 1em;
+
+      }
+
+      .gif {
+        width: 50%;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2em;
+      }
+
+      .button {
+        border: none;
+        padding: 12px 24px;
+        background-color: #25a2b8;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        margin: 0 1em;
+        color: white;
+        transition: all 0.3s;
+        outline: none;
+      }
+
+      .button:hover {
+        background-color: #007b91;
+        transform: scale(1.1);
+      }
+
+    </style>
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+  </head>
+
+  <body oncontextmenu="return false;">
+    <div class="container">
+      <header>
+        <img class="logo" src="{% static 'images/rgt.png' %}" alt="Ratna Global Tech logo" />
+        <h1 class="title">Thank You!</h1>
+        <h2 class="subtitle">Your Feedback has been Received Successfully</h2>
+      </header>
+
+      <div class="main-content">
+        <img class="gif" src="https://tenor.com/view/cool-emoji-wink-thumbs-up-great-gif-16705876.gif" alt="Thumbs up funny GIF" />
+      </div>
+
+      <div class="button-container">
+        <button class="button" onclick="location.href='model'">ML Model</button>
+        <button class="button" onclick="location.href='results'">View Results</button>
+        <button class="button" onclick="location.href='/'">Logout</button>
+      </div>
+    </div>
+  </body>
+</html>
+

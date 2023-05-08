@@ -1,0 +1,182 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Employee Feedback Data</title>
+    <link rel = "icon" href ="{% static 'images/rgt.png' %}"
+        type = "image/x-icon" >
+    <style>
+      body {
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .header {
+        background-color: #ffbd79;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        justify-items: center;
+        margin-bottom: 40px;
+      }
+
+      .image {
+        width: 100%;
+        height: 350px;
+        cursor: pointer;
+        border: 2px solid #4caf50;
+        transition: transform 0.2s;
+      }
+
+      .image:nth-child(5),
+        .image:nth-child(6) {
+          grid-column: 2/4;
+        }
+
+      .image:hover {
+        transform: scale(1.05);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        display: block;
+      }
+
+      .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      #logout {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+
+      .footer a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+
+    </style>
+    <script>
+
+    </script>
+  </head>
+
+  <body  oncontextmenu="return false;">
+    <div class="header">
+      <h1>Employee Feedback Data</h1>
+    </div>
+
+    <button id="logout" onclick="location.href='/'" >Logout</button>
+
+    <div class="image-grid">
+      <img src="{% static 'graphs/pie_company.png' %}" class="image">
+      <img src="{% static 'graphs/bar_management.png' %}" class="image">
+      <img src="{% static 'graphs/manager.png' %}" class="image">
+      <img src="{% static 'graphs/HR.png' %}" class="image">
+      <img src="{% static 'graphs/plot.png' %}" class="image">
+    </div>
+    <div id="zoom-modal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content">
+    </div>
+    <script>
+      var modal = document.getElementById("zoom-modal");
+      var modalImg = document.getElementsByClassName("modal-content")[0];
+      var images = document.getElementsByClassName("image");
+      var span = document.getElementsByClassName("close")[0];
+
+      for (var i = 0; i < images.length; i++) {
+        images[i].onclick = function() {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        }
+      }
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      modal.onclick = function() {
+        modal.style.display = "none";
+      }
+
+    </script>
+    <footer style="background-color: #444444; color: white; padding: 5px; text-align: center;">
+      <h3>Follow us on social media:</h3>
+        <ul style="display: flex; justify-content: center; align-items: center; list-style: none; margin: 0; padding: 10;">
+          <li style="margin: 0 10px;"><a href="https://www.facebook.com/ratnaglobaltech?mibextid=ZbWKwL"><img src="{% static 'images/facebook.png' %}" alt="Facebook logo"></a></li>
+          <li style="margin: 0 10px;"><a href="https://www.instagram.com/ratnaglobaltech/"><img src="{% static 'images/instagram.png' %}" alt="Instagram logo"></a></li>
+          <li style="margin: 0 10px;"><a href="https://www.linkedin.com/company/ratnaglobaltech/"><img src="{% static 'images/linkedin.png' %}" alt="LinkedIn logo"></a></li>
+          <li style="margin: 0 10px;"><a href="https://twitter.com/ratnaglobaltech"><img src="{% static 'images/twitter.png' %}" alt="Twitter logo"></a></li>
+        </ul>
+        <style>
+          footer img {
+            transition: transform 0.2s;
+          }
+
+          footer img:hover {
+            transform: scale(1.2);
+          }
+        </style>
+    </footer>
+  </body>
+</html>
